@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import useReveal from '../hooks/useReveal';
-
-// useReveal is imported from src/hooks/useReveal.js
+import coinbaseLogo from '../assets/coinbase_logo@2x.png'; // Import original Coinbase logo
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -22,10 +21,11 @@ function SignIn() {
       {/* Logo */}
       <div style={{ padding: '22px 28px' }}>
         <Link to="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="14" r="14" fill="#fff" />
-            <path d="M 20.36 20.36 A 9 9 0 1 1 20.36 7.64" fill="none" stroke="#1652F0" strokeWidth="4.5" strokeLinecap="round"/>
-          </svg>
+          <img 
+            src={coinbaseLogo} 
+            alt="Coinbase Logo" 
+            style={{ width: '28px', height: '28px', objectFit: 'contain' }} 
+          />
         </Link>
       </div>
 
@@ -85,9 +85,9 @@ function SignIn() {
           </form>
 
           {/* OR divider */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px', width: '100%',}}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px', width: '100%', }}>
             <div style={{ flex: 1, height: '1px', background: '#E5E7EB' }} />
-            <span style={{ color: '#6B7280', fontSize: '0.8125rem', fontWeight: '600', letterSpacing: '0.06em',  }}>OR</span>
+            <span style={{ color: '#6B7280', fontSize: '0.8125rem', fontWeight: '600', letterSpacing: '0.06em' }}>OR</span>
             <div style={{ flex: 1, height: '1px', background: '#E5E7EB' }} />
           </div>
 
@@ -154,4 +154,3 @@ function SignIn() {
 }
 
 export default SignIn;
-

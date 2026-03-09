@@ -2,8 +2,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useLivePrices } from '../../context/LivePricesContext';
 import { useAuth } from '../../context/AuthContext';
+import coinbaseLogo from '../../assets/coinbase_logo@2x.png';
 
-// ── Crypto ticker tape ──────────────────────────────────────
+
 function CryptoTicker() {
   const cryptoData = useLivePrices() ?? [];
   const items = [...cryptoData, ...cryptoData];
@@ -30,7 +31,6 @@ function CryptoTicker() {
   );
 }
 
-// ── Gray circle icon wrapper ──────────────────────────────────
 function Ico({ children }) {
   return (
     <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#F2F4F7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -45,7 +45,7 @@ function SVG({ children, ...rest }) {
     </svg>
   );
 }
-// ── Named icons ───────────────────────────────────────────────
+
 const IcoClock   = () => <Ico><SVG><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></SVG></Ico>;
 const IcoShield  = () => <Ico><SVG><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></SVG></Ico>;
 const IcoPercent = () => <Ico><SVG><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></SVG></Ico>;
@@ -68,7 +68,7 @@ const IcoFile    = () => <Ico><SVG><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2
 const IcoPrice   = () => <Ico><SVG><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></SVG></Ico>;
 const IcoHex     = () => <Ico><SVG><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></SVG></Ico>;
 
-// ── World-map dot illustration (used in Institutions promo) ────
+
 function WorldMap() {
   const dots = [
     [2,1],[3,1],[4,1],[5,1],[3,2],[4,2],[5,2],[2,3],[3,3],[4,3],[5,3],[3,4],[4,4],
@@ -87,7 +87,7 @@ function WorldMap() {
     </svg>
   );
 }
-// ── Dropdown data ─────────────────────────────────────────────
+
 const DROPDOWNS = {
   cryptocurrencies: {
     cols: [
@@ -286,7 +286,7 @@ const DROPDOWNS = {
   },
 };
 
-// ── Dropdown panel ────────────────────────────────────────────
+
 function DropdownPanel({ data, onClose }) {
   if (!data) return null;
   return (
@@ -376,7 +376,7 @@ function DropdownPanel({ data, onClose }) {
   );
 }
 
-// ── Navbar ────────────────────────────────────────────────────
+
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -416,7 +416,7 @@ function Navbar() {
         </Link>
 
         {/* Desktop nav items */}
-        <div style={{ display: 'flex', alignItems: 'center',  gap: '22px', marginLeft: '12px', fontWeight: '800' }} className="hidden-mobile">
+        <div style={{ display: 'flex', alignItems: 'center',  gap: '12px', marginLeft: '100px', fontWeight: '800' }} className="hidden-mobile">
           {NAV_ITEMS.map(({ key, label, path, direct }) => (
             <div
               key={key}
