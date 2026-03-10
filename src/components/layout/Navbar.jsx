@@ -5,46 +5,6 @@ import { useAuth } from '../../context/AuthContext';
 import coinbaseLogo from '../../assets/coinbase_logo@2x.png';
 
 
-function CryptoTicker() {
-  const cryptoData = useLivePrices() ?? [];
-  const items = [...cryptoData, ...cryptoData];
-  return (
-    <div className="ticker-wrap" style={{ background: '#0A0B0D', borderBottom: '1px solid #1C1C1E', padding: '6px 0' }}>
-      <div className="ticker-inner">
-        {items.map((coin, i) => {
-          const isUp = coin.change24h >= 0;
-          return (
-            <span style={{ padding: '0 22px', display: 'inline-flex', alignItems: 'center', gap: '8px', whiteSpace: 'nowrap', fontSize: '0.875rem', fontWeight: '700' }}>
-              <span style={{ color: '#9CA3AF', letterSpacing: '0.05em' }}>{coin.symbol}</span>
-              <span style={{ color: '#F3F4F6', fontVariantNumeric: 'tabular-nums' }}>
-                ${coin.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              </span>
-              <span style={{ color: isUp ? '#22C55E' : '#EF4444' }}>
-                {isUp ? '▲' : '▼'} {Math.abs(coin.change24h).toFixed(2)}%
-              </span>
-              <span style={{ color: '#2D2F35' }}>|</span>
-            </span>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function Ico({ children }) {
-  return (
-    <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#F2F4F7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-      {children}
-    </div>
-  );
-}
-function SVG({ children, ...rest }) {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
-      {children}
-    </svg>
-  );
-}
 
 const IcoClock   = () => <Ico><SVG><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></SVG></Ico>;
 const IcoShield  = () => <Ico><SVG><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></SVG></Ico>;
@@ -511,7 +471,7 @@ function Navbar() {
         </button>
       </div>
 
-      {location.pathname === '/' && <CryptoTicker />}
+      
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
