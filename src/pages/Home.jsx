@@ -5,7 +5,7 @@ import useReveal from '../hooks/useReveal';
 import CryptoCard from '../components/crypto/CryptoCard';
 import PriceChart from '../components/crypto/PriceChart';
 
-// useReveal is imported from src/hooks/useReveal.js
+
 function Reveal({ children, variant = 'reveal-fade-up', delay = '', className = '', style = {} }) {
   const ref = useReveal();
   return (
