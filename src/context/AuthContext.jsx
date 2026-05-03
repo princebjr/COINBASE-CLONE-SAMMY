@@ -1,8 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-<<<<<<< HEAD
 import API_URL from '../api';
-=======
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
 
 const AuthContext = createContext(null);
 
@@ -16,7 +13,6 @@ export function AuthProvider({ children }) {
     }
   });
 
-<<<<<<< HEAD
   const login = async (email, password) => {
     const res = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
@@ -52,25 +48,12 @@ export function AuthProvider({ children }) {
         credentials: 'include',
       });
     } catch (_) {}
-=======
-  const login = (email) => {
-    const u = { email };
-    setUser(u);
-    localStorage.setItem('cb_user', JSON.stringify(u));
-  };
-
-  const logout = () => {
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
     setUser(null);
     localStorage.removeItem('cb_user');
   };
 
   return (
-<<<<<<< HEAD
     <AuthContext.Provider value={{ user, login, register, logout }}>
-=======
-    <AuthContext.Provider value={{ user, login, logout }}>
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
       {children}
     </AuthContext.Provider>
   );
