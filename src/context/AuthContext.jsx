@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import API_URL from '../api';
 
 const AuthContext = createContext(null);
 
@@ -12,19 +13,47 @@ export function AuthProvider({ children }) {
     }
   });
 
-  const login = (email) => {
-    const u = { email };
-    setUser(u);
-    localStorage.setItem('cb_user', JSON.stringify(u));
+  const login = async (email, password) => {
+    const res = await fetch(`${API_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message);
+    setUser(data.user);
+    localStorage.setItem('cb_user', JSON.stringify(data.user));
+    return data.user;
   };
 
-  const logout = () => {
+  const register = async (name, email, password) => {
+    const res = await fetch(`${API_URL}/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ name, email, password }),
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message);
+    setUser(data.user);
+    localStorage.setItem('cb_user', JSON.stringify(data.user));
+    return data.user;
+  };
+
+  const logout = async () => {
+    try {
+      await fetch(`${API_URL}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } catch (_) {}
     setUser(null);
     localStorage.removeItem('cb_user');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
