@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useLivePrices } from '../../context/LivePricesContext';
 import { useAuth } from '../../context/AuthContext';
-<<<<<<< HEAD
 import coinbaseLogo from '../../assets/coinbase_logo@2x.png';
 
 
@@ -31,11 +30,6 @@ function CryptoTicker() {
     </div>
   );
 }
-=======
-
-
-
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
 
 function Ico({ children }) {
   return (
@@ -317,19 +311,11 @@ function DropdownPanel({ data, onClose }) {
       }}
       onMouseLeave={onClose}
     >
-<<<<<<< HEAD
       {/* Item columns */}
       <div style={{ display: 'flex', gap: '24px', flex: 1 }}>
         {data.cols.map((col, ci) => (
           <div key={ci} style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 210 }}>
             {/* Section header */}
-=======
-    
-      <div style={{ display: 'flex', gap: '25px', flex: 1 }}>
-        {data.cols.map((col, ci) => (
-          <div key={ci} style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 210 }}>
-           
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
             {col.header && (
               col.header.hasLink ? (
                 <Link
@@ -348,11 +334,7 @@ function DropdownPanel({ data, onClose }) {
                 </p>
               )
             )}
-<<<<<<< HEAD
             {/* Items */}
-=======
-            
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
             {col.items.map(({ icon, label, desc, to }) => (
               <Link
                 key={label}
@@ -373,11 +355,7 @@ function DropdownPanel({ data, onClose }) {
         ))}
       </div>
 
-<<<<<<< HEAD
       {/* Promo panel */}
-=======
-      
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
       <div style={{ width: 200, flexShrink: 0, background: data.promo.bg, borderRadius: '12px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', border: '1px solid #F3F4F6' }}>
         {data.promo.illus}
         <div>
@@ -428,11 +406,7 @@ function Navbar() {
     <nav style={{ background: '#fff', position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 1px 0 #E5E7EB' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', height: '64px', gap: '8px' }}>
 
-<<<<<<< HEAD
         {/* Logo */}
-=======
-       
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, marginRight: '8px' }}>
           <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1652F0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
@@ -441,42 +415,25 @@ function Navbar() {
           </div>
         </Link>
 
-<<<<<<< HEAD
         {/* Desktop nav items */}
         <div style={{ display: 'flex', alignItems: 'center',  gap: '12px', marginLeft: '100px', fontWeight: '800' }} className="hidden-mobile">
           {NAV_ITEMS.map(({ key, label, path, direct }) => (
             <div
               key={key}
               style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
-=======
-       
-        <div style={{ display: 'flex',  gap: '20px', marginRight: '80px', marginLeft:'80px' }} className="hidden-mobile">
-          {NAV_ITEMS.map(({ key, label, path, direct }) => (
-            <div
-              key={key}
-              style={{ position: 'relative', flex: 1, display: 'flex', justifyContent: 'center' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
               onMouseEnter={() => !direct && setActiveDropdown(key)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               {direct ? (
                 <Link
                   to={path}
-<<<<<<< HEAD
                   style={{ display: 'inline-flex', alignItems: 'center', padding: '8px 4px', fontSize: '1rem', fontWeight: '700', color: isActive(path) ? '#1652F0' : '#374151', textDecoration: 'none', borderRadius: '8px', whiteSpace: 'nowrap' }}
-=======
-                  style={{ display: 'inline-flex', alignItems: 'center', padding: '8px 4px', fontSize: '0.975rem',  fontWeight: '700', color: 'black' , textDecoration: 'none', borderRadius: '8px', whiteSpace: 'nowrap' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
                 >
                   {label}
                 </Link>
               ) : (
                 <button
-<<<<<<< HEAD
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', padding: '8px 4px', fontSize: '1rem', fontWeight: '700', color: activeDropdown === key ? '#1652F0' : '#374151', background: 'none', border: 'none', cursor: 'pointer', borderRadius: '8px', whiteSpace: 'nowrap' }}
-=======
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', padding: '8px 4px', fontSize: '0.975rem', fontWeight: '700', color: 'black', background: 'none', border: 'none', cursor: 'pointer', borderRadius: '8px', whiteSpace: 'nowrap' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
                 >
                   {label}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ transform: activeDropdown === key ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
@@ -491,13 +448,8 @@ function Navbar() {
           ))}
         </div>
 
-<<<<<<< HEAD
         {/* Right side */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0, marginLeft: 'auto' }} className="hidden-mobile">
-=======
-        
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }} className="hidden-mobile">
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
           <button style={{ padding: '8px', background: 'none', border: 'none', cursor: 'pointer', color: '#6B7280', borderRadius: '8px' }}
             onMouseEnter={e => { e.currentTarget.style.background = '#F3F4F6'; e.currentTarget.style.color = '#111827'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#6B7280'; }}
@@ -514,11 +466,7 @@ function Navbar() {
             <>
               <Link
                 to="/dashboard"
-<<<<<<< HEAD
                 style={{ padding: '8px 14px', fontSize: '1rem', fontWeight: '700', color: isActive('/dashboard') ? '#1652F0' : '#374151', textDecoration: 'none', borderRadius: '8px', whiteSpace: 'nowrap' }}
-=======
-                style={{ padding: '8px 14px', fontSize: '0.875rem', fontWeight: '600', color: isActive('/dashboard') ? '#1652F0' : '#374151', textDecoration: 'none', borderRadius: '8px', whiteSpace: 'nowrap' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
                 onMouseEnter={e => { e.currentTarget.style.background = '#F3F4F6'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'none'; }}
               >
@@ -526,11 +474,7 @@ function Navbar() {
               </Link>
               <button
                 onClick={handleLogout}
-<<<<<<< HEAD
                 style={{ padding: '9px 18px', fontSize: '1rem', fontWeight: '700', color: '#DC2626', background: '#FEE2E2', borderRadius: '99px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
-=======
-                style={{ padding: '9px 18px', fontSize: '0.875rem', fontWeight: '700', color: '#DC2626', background: '#FEE2E2', borderRadius: '99px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
                 onMouseEnter={e => { e.currentTarget.style.background = '#FECACA'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = '#FEE2E2'; }}
               >
@@ -539,21 +483,13 @@ function Navbar() {
             </>
           ) : (
             <>
-<<<<<<< HEAD
               <Link to="/signin" style={{ padding: '8px 14px', fontSize: '1rem', fontWeight: '700', color: '#374151', textDecoration: 'none', borderRadius: '99px', whiteSpace: 'nowrap' }}
-=======
-              <Link to="/signin" style={{ padding: '8px 14px', fontSize: '0.875rem', fontWeight: '600', color: '#374151', textDecoration: 'none', borderRadius: '99px', whiteSpace: 'nowrap' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
                 onMouseEnter={e => { e.currentTarget.style.background = '#F3F4F6'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'none'; }}
               >
                 Sign in
               </Link>
-<<<<<<< HEAD
               <Link to="/signup" style={{ padding: '9px 18px', fontSize: '1rem', fontWeight: '700', color: '#fff', background: '#1652F0', borderRadius: '99px', textDecoration: 'none', whiteSpace: 'nowrap' }}
-=======
-              <Link to="/signup" style={{ padding: '9px 18px', fontSize: '0.875rem', fontWeight: '700', color: '#fff', background: '#1652F0', borderRadius: '99px', textDecoration: 'none', whiteSpace: 'nowrap' }}
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
                 onMouseEnter={e => { e.currentTarget.style.background = '#1340CC'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = '#1652F0'; }}
               >
@@ -563,11 +499,7 @@ function Navbar() {
           )}
         </div>
 
-<<<<<<< HEAD
         {/* Mobile hamburger */}
-=======
-        
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           style={{ display: 'none', padding: '8px', background: 'none', border: 'none', cursor: 'pointer', color: '#374151', marginLeft: 'auto' }}
@@ -579,15 +511,9 @@ function Navbar() {
         </button>
       </div>
 
-<<<<<<< HEAD
       {location.pathname === '/' && <CryptoTicker />}
 
       {/* Mobile menu */}
-=======
-     
-
-      
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
       {isMobileMenuOpen && (
         <div style={{ background: '#fff', borderTop: '1px solid #F3F4F6', padding: '12px 16px 20px' }}>
           {NAV_ITEMS.map(({ key, label, path, direct }) => (
@@ -651,8 +577,4 @@ function Navbar() {
   );
 }
 
-<<<<<<< HEAD
 export default Navbar;
-=======
-export default Navbar;
->>>>>>> 59a2e2c724373c336ffa9769f894d9df3981af65
