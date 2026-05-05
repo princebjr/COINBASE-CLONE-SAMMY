@@ -11,6 +11,8 @@ import AdvancedTrading from './pages/AdvancedTrading';
 import Dashboard from './pages/Dashboard';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { LivePricesProvider } from './context/LivePricesContext';
+import WarningBanner from './components/WarningBanner';
+import FooterDisclaimer from './components/FooterDisclaimer';
 
 const AUTH_ROUTES = ['/signin', '/signup'];
 
@@ -25,6 +27,8 @@ function AppLayout() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Always visible warning banner */}
+      <WarningBanner />
       {!isAuthPage && <Navbar />}
       <main className="grow">
         <Routes>
@@ -39,6 +43,8 @@ function AppLayout() {
         </Routes>
       </main>
       {!isAuthPage && <Footer />}
+      {/* Always visible footer disclaimer */}
+      <FooterDisclaimer />
     </div>
   );
 }
