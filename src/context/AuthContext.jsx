@@ -17,13 +17,13 @@ export function AuthProvider({ children }) {
     const res = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
       body: JSON.stringify({ email, password }),
     });
     const data = await res.json();
     if (!data.success) throw new Error(data.message);
     setUser(data.user);
     localStorage.setItem('cb_user', JSON.stringify(data.user));
+    localStorage.setItem('cb_token', data.token);
     return data.user;
   };
 
@@ -31,25 +31,30 @@ export function AuthProvider({ children }) {
     const res = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
       body: JSON.stringify({ name, email, password }),
     });
     const data = await res.json();
     if (!data.success) throw new Error(data.message);
     setUser(data.user);
     localStorage.setItem('cb_user', JSON.stringify(data.user));
+    localStorage.setItem('cb_token', data.token);
     return data.user;
   };
 
   const logout = async () => {
     try {
+      const token = localStorage.getItem('cb_token');
       await fetch(`${API_URL}/auth/logout`, {
         method: 'POST',
-        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
       });
     } catch (_) {}
     setUser(null);
     localStorage.removeItem('cb_user');
+    localStorage.removeItem('cb_token');
   };
 
   return (

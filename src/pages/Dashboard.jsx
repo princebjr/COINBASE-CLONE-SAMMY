@@ -43,17 +43,18 @@ export default function Dashboard() {
   const [buyAmount, setBuyAmount] = useState('');
   const [profile, setProfile] = useState(null);
 
-  // ── Protected route: redirect if not logged in ──
   useEffect(() => {
     if (!user) {
       navigate('/signin');
       return;
     }
-    // Fetch real profile from backend
     const fetchProfile = async () => {
       try {
+        const token = localStorage.getItem('cb_token');
         const res = await fetch(`${API_URL}/user/profile`, {
-          credentials: 'include',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
         });
         if (res.status === 401) {
           logout();
@@ -72,7 +73,6 @@ export default function Dashboard() {
     ? (parseFloat(buyAmount) / selectedCoinData.price).toFixed(6)
     : null;
 
-  // Use real name from profile, fallback to email prefix
   const displayName = profile?.name || user?.name || user?.email?.split('@')[0] || 'there';
 
   return (
@@ -93,23 +93,18 @@ export default function Dashboard() {
             <Link to="/explore" style={{ padding: '7px 16px', background: '#F3F4F6', color: '#6B7280', borderRadius: '8px', fontWeight: '600', fontSize: '0.8125rem', textDecoration: 'none', border: '1px solid #E5E7EB' }}>
               Explore Markets
             </Link>
-            <button
-              onClick={() => { logout(); navigate('/signin'); }}
-              style={{ padding: '7px 16px', background: '#FEF2F2', color: '#DC2626', borderRadius: '8px', fontWeight: '600', fontSize: '0.8125rem', border: '1px solid #FECACA', cursor: 'pointer' }}
-            >
+            <button onClick={() => { logout(); navigate('/signin'); }} style={{ padding: '7px 16px', background: '#FEF2F2', color: '#DC2626', borderRadius: '8px', fontWeight: '600', fontSize: '0.8125rem', border: '1px solid #FECACA', cursor: 'pointer' }}>
               Logout
             </button>
           </div>
         </div>
       </div>
 
-      {/* Main 2-column grid */}
+      {/* Main grid */}
       <div className="dashboard-grid" style={{ maxWidth: '1280px', margin: '0 auto', padding: '28px 24px', display: 'grid', gridTemplateColumns: 'minmax(0,1.6fr) 360px', gap: '22px', alignItems: 'start' }}>
 
-        {/* LEFT COLUMN */}
+        {/* LEFT */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-
-          {/* Portfolio card */}
           <Reveal delay={0}>
             <div style={{ background: '#fff', borderRadius: '20px', border: '1px solid #E5E7EB', overflow: 'hidden' }}>
               <div style={{ padding: '26px 28px 0' }}>
@@ -120,9 +115,7 @@ export default function Dashboard() {
                 </div>
                 <div style={{ display: 'flex', gap: '3px', marginTop: '20px', marginBottom: '4px' }}>
                   {PERIODS.map(p => (
-                    <button key={p} onClick={() => setActivePeriod(p)} style={{ padding: '5px 12px', borderRadius: '99px', border: 'none', cursor: 'pointer', fontWeight: '700', fontSize: '0.8125rem', background: activePeriod === p ? '#1652F0' : 'transparent', color: activePeriod === p ? '#fff' : '#6B7280', transition: 'all 0.15s' }}>
-                      {p}
-                    </button>
+                    <button key={p} onClick={() => setActivePeriod(p)} style={{ padding: '5px 12px', borderRadius: '99px', border: 'none', cursor: 'pointer', fontWeight: '700', fontSize: '0.8125rem', background: activePeriod === p ? '#1652F0' : 'transparent', color: activePeriod === p ? '#fff' : '#6B7280', transition: 'all 0.15s' }}>{p}</button>
                   ))}
                 </div>
               </div>
@@ -201,7 +194,7 @@ export default function Dashboard() {
           </Reveal>
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* RIGHT */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
           {/* Profile card */}

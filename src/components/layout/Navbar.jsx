@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import coinbaseLogo from '../../assets/coinbase_logo@2x.png';
 
 
+
 function CryptoTicker() {
   const cryptoData = useLivePrices() ?? [];
   const items = [...cryptoData, ...cryptoData];
@@ -407,13 +408,11 @@ function Navbar() {
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', height: '64px', gap: '8px' }}>
 
         {/* Logo */}
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, marginRight: '8px' }}>
-          <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1652F0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-              <path d="M 20.36 20.36 A 9 9 0 1 1 20.36 7.64" fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round"/>
-            </svg>
-          </div>
-        </Link>
+        <div style={{ padding: '22px 28px' }}>
+                <Link to="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                  <img src={coinbaseLogo} alt="Coinbase Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+                </Link>
+              </div>
 
         {/* Desktop nav items */}
         <div style={{ display: 'flex', alignItems: 'center',  gap: '12px', marginLeft: '100px', fontWeight: '800' }} className="hidden-mobile">

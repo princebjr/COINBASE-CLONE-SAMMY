@@ -32,7 +32,7 @@ function SignIn() {
       {/* Logo */}
       <div style={{ padding: '22px 28px' }}>
         <Link to="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-          <img src={coinbaseLogo} alt="Coinbase Logo" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+          <img src={coinbaseLogo} alt="Coinbase Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
         </Link>
       </div>
 

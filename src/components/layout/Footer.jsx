@@ -41,7 +41,7 @@ const COLS = [
       { label: 'Buy & sell',        to: '/explore' }, 
       { label: 'Earn free crypto',  to: '/explore' }, 
       { label: 'Base App',  to: '/explore' }, 
-      { label: 'Coinbae One',            to: '/explore' }, 
+      { label: 'Coinbase One',            to: '/explore' }, 
       { label: 'Debit Card',              to: '/explore' }, 
     ], 
   }, 
